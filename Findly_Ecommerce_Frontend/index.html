@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern e-commerce product search and recommendation frontend." />
+  <title>Findly — Product Search & Recommendations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="announcement">Free delivery on orders over ₹999 <span>•</span> Smart recommendations based on what you like.</div>
+
+  <header class="nav">
+    <a class="brand" href="#" aria-label="Findly home">
+      <span class="brand-mark">F</span>
+      <span>findly</span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#latest">Latest</a>
+      <a href="#categories">Categories</a>
+      <a href="#recommended">For You</a>
+      <a href="#deals">Deals</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="openSearch" aria-label="Open search">⌕</button>
+      <button class="icon-btn" id="cartBtn" aria-label="Shopping cart">Bag <span id="cartCount">0</span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">SMARTER SHOPPING</p>
+        <h1>Find what you want.<br><span>Discover what you’ll love.</span></h1>
+        <p class="hero-sub">Search thousands of products and let intelligent recommendations narrow the choice for you.</p>
+
+        <form class="search-box" id="searchForm">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search products, brands, categories..." autocomplete="off" />
+          <button type="submit">Search</button>
+        </form>
+
+        <div class="quick-searches">
+          <span>Popular:</span>
+          <button data-query="laptop">Laptops</button>
+          <button data-query="headphones">Headphones</button>
+          <button data-query="smartphone">Smartphones</button>
+          <button data-query="watch">Smartwatches</button>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal delay-1">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="floating-card card-back">
+          <span>Top pick</span>
+          <strong>MacBook Air</strong>
+          <small>98% match</small>
+        </div>
+        <div class="product-stage">
+          <div class="laptop-screen">
+            <div class="screen-glow"></div>
+            <div class="screen-content">FIND<br><b>YOUR</b><br>FLOW.</div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+        <div class="floating-card card-front">
+          <span>Recommended for you</span>
+          <strong>Based on your interests</strong>
+          <div class="match"><i></i><b>94% match</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-strip section reveal" id="categories">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow">EXPLORE</p>
+          <h2>Shop by category.</h2>
+        </div>
+      </div>
+      <div class="categories">
+        <button class="category active" data-category="all"><span>✦</span><b>All</b></button>
+        <button class="category" data-category="laptop"><span>⌨</span><b>Laptops</b></button>
+        <button class="category" data-category="smartphone"><span>▣</span><b>Phones</b></button>
+        <button class="category" data-category="audio"><span>◉</span><b>Audio</b></button>
+        <button class="category" data-category="watch"><span>◌</span><b>Wearables</b></button>
+        <button class="category" data-category="accessory"><span>◇</span><b>Accessories</b></button>
+      </div>
+    </section>
+
+    <section class="section" id="latest">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">CURATED COLLECTION</p>
+          <h2>The latest. <em>Picked for you.</em></h2>
+        </div>
+        <button class="text-btn" id="clearFilters">View all <span>→</span></button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="recommendation section reveal" id="recommended">
+      <div class="recommend-copy">
+        <p class="eyebrow">RECOMMENDATION ENGINE</p>
+        <h2>Not sure what to buy?</h2>
+        <p>Tell us what matters and we’ll surface products that fit your preferences. The frontend is ready to connect to your recommendation API later.</p>
+        <button class="primary-btn" id="personalizeBtn">Personalize my picks</button>
+      </div>
+      <div class="preference-card">
+        <div class="preference-top"><span>01</span><span>Quick preferences</span></div>
+        <h3>What are you shopping for?</h3>
+        <div class="preference-options">
+          <button data-pref="performance">Performance</button>
+          <button data-pref="value">Best value</button>
+          <button data-pref="design">Design</button>
+          <button data-pref="battery">Battery life</button>
+        </div>
+        <div class="preference-result" id="preferenceResult">Choose a priority to improve your recommendations.</div>
+      </div>
+    </section>
+
+    <section class="section deals" id="deals">
+      <div class="deal-banner reveal">
+        <div>
+          <p class="eyebrow">LIMITED PICKS</p>
+          <h2>Good products.<br>Better prices.</h2>
+          <p>Hand-picked deals updated regularly.</p>
+        </div>
+        <div class="deal-product">
+          <div class="deal-disc"></div>
+          <div class="deal-headphones">◉  ◉</div>
+          <div class="deal-stem"></div>
+        </div>
+        <button class="primary-btn" onclick="document.querySelector('#latest').scrollIntoView({behavior:'smooth'})">Explore deals</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div class="brand"><span class="brand-mark">F</span><span>findly</span></div>
+      <p>A frontend foundation for an intelligent e-commerce platform.</p>
+      <div class="footer-links"><a href="#">About</a><a href="#">Privacy</a><a href="#">Support</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 Findly. Built to connect with your search & recommendation backend.</div>
+  </footer>
+
+  <div class="search-overlay" id="searchOverlay">
+    <div class="overlay-panel">
+      <button class="close-btn" id="closeSearch">×</button>
+      <p class="eyebrow">PRODUCT SEARCH</p>
+      <h2>What are you looking for?</h2>
+      <form class="overlay-search" id="overlaySearchForm">
+        <input id="overlayInput" type="search" placeholder="Try “wireless headphones”..." />
+        <button>Search</button>
+      </form>
+      <div class="search-suggestions">
+        <span>Try</span><button data-query="gaming laptop">gaming laptop</button><button data-query="noise cancelling">noise cancelling</button><button data-query="smartwatch">smartwatch</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Added to bag</div>
+  <script src="script.js"></script>
+</body>
+</html>
